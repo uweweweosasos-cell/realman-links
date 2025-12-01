@@ -1,54 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Real Man Links</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Real Man — Links</title>
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(180deg, #F5EAD6, #FFFFFF);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
+  :root{
+    --bg1: #0f1724;           /* фон сверху */
+    --bg2: #111827;           /* фон снизу */
+    --accent: linear-gradient(90deg,#c9a87c,#f6ead1); /* основной акцент (можешь сменить) */
+    --card: rgba(255,255,255,0.06);
+    --text: #f8f8f8;
+    --muted: rgba(248,248,248,0.7);
+    --radius: 14px;
+    --glass-border: rgba(255,255,255,0.06);
   }
 
-  h1 {
-    font-size: 3em;
-    color: #111;
-    margin-bottom: 50px;
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,var(--bg1),var(--bg2));
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
   }
 
-  a.button {
-    display: block;
-    width: 250px;
-    margin: 15px auto;
-    padding: 15px;
-    font-size: 1.2em;
-    color: #111;
-    text-decoration: none;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #F5EAD6, #FFFFFF);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+  .wrap{
+    width:100%;
+    max-width:520px;
+    text-align:center;
   }
 
-  a.button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:22px;
+  }
+  .logo{
+    width:64px;
+    height:64px;
+    border-radius:12px;
+    background:var(--accent);
+    display:grid;
+    place-items:center;
+    color:#111;
+    font-weight:700;
+    box-shadow:0 6px 20px rgba(0,0,0,0.6), inset 0 -6px 12px rgba(255,255,255,0.05);
+    flex:0 0 64px;
+  }
+  .brand h1{
+    margin:0;
+    font-size:20px;
+    letter-spacing:0.2px;
+  }
+  .tag{
+    margin-top:6px;
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  .card{
+    margin:22px 0;
+    padding:18px;
+    border-radius:var(--radius);
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  }
+
+  .links{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+  }
+
+  a.btn{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    text-decoration:none;
+    padding:12px;
+    border-radius:12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    color:var(--text);
+    border:1px solid rgba(255,255,255,0.03);
+    transition: transform .12s ease, box-shadow .12s ease;
+    min-height:52px;
+  }
+  a.btn:hover{ transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.45); }
+
+  .icon{
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    flex:0 0 38px;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .btn span.text{
+    text-align:left;
+    display:block;
+  }
+  .btn .title{
+    font-weight:600;
+    font-size:14px;
+    line-height:1;
+  }
+  .btn .sub{
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* full-width button (social center) */
+  .full{ grid-column: 1 / -1; display:flex; justify-content:center; }
+
+  /* footer small */
+  .foot{
+    margin-top:14px;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* mobile */
+  @media (max-width:420px){
+    .links{ grid-template-columns:1fr; }
+    .brand{ gap:10px }
   }
 </style>
 </head>
 <body>
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">RM</div>
+    <div>
+      <h1>Real Man</h1>
+      <div class="tag">Modern classic • polu-klassika</div>
+    </div>
+  </div>
 
-<h1>Real Man</h1>
+  <div class="card">
+    <div class="links">
+      <!-- Telegram (твой рабочий линк уже вставлен) -->
+      <a class="btn" href="https://t.me/realmanuzz" target="_blank" rel="noopener">
+        <div class="icon" aria-hidden>
+          <!-- paper-plane -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2L15 22l-4-9-9-4 20-7z"></path></svg>
+        </div>
+        <span class="text"><span class="title">Telegram</span><span class="sub">@realmanuzz</span></span>
+      </a>
 
-<a class="button" href="https://t.me/realmanuzz" target="_blank">Telegram</a>
+      <!-- Instagram -->
+      <a class="btn" href="https://www.instagram.com/realmanuzz/?__pwa=1" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><path d="M17.5 6.5h.01"></path></svg>
+        </div>
+        <span class="text"><span class="title">Instagram</span><span class="sub">@realman</span></span>
+      </a>
 
+      <!-- Z -->
+      <a class="btn" href="https://wa.me/77770001122" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 11-3.8-11.3 8.38 8.38 0 013.8.9L23 2l-3 9.5z"></path><path d="M22 22l-4.35-1.15"></path></svg>
+        </div>
+        <span class="text"><span class="title">WhatsApp</span><span class="sub">Заказать / Вопросы</span></span>
+      </a>
+
+      <!-- BeatStars / Shop -->
+      <a class="btn" href="https://beatstars.com/yourpage" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v4H3z"></path><path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7"></path></svg>
+        </div>
+        <span class="text"><span class="title">BeatStars / Магазин</span><span class="sub">Биты & Товары</span></span>
+      </a>
+
+      <!-- YouTube -->
+      <a class="btn" href="https://youtube.com/yourchannel" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2 2 0 0 0-1.4-1.4C18.88 4 12 4 12 4s-6.88 0-9.14.98a2 2 0 0 0-1.4 1.4C1 8.7 1 12 1 12s0 3.3.46 5.58a2 2 0 0 0 1.4 1.4C5.12 20 12 20 12 20s6.88 0 9.14-.98a2 2 0 0 0 1.4-1.4C23 15.3 23 12 23 12s0-3.3-.46-5.58z"></path><path d="M9.75 15.02l5.5-3.02L9.75 9z"></path></svg>
+        </div>
+        <span class="text"><span class="title">YouTube</span><span class="sub">Видео & Ролики</span></span>
+      </a>
+
+      <!-- Location -->
+      <a class="btn" href="https://maps.app.goo.gl/hsVQXoYra86GNQFg9?g_st=atm" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <span class="text"><span class="title">Location</span><span class="sub">Где нас найти</span></span>
+      </a>
+
+      <!-- Email / Contact (full width) -->
+      <a class="btn full" href="realmanuzb@gmail.com" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <span class="text"><span class="title">Связаться / Email</span><span class="sub">info@realman.example</span></span>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    Подпись: Modern Classic • Polu-klassika — Real Man
+  </div>
+</div>
 </body>
 </html>
